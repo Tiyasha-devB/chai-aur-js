@@ -10,9 +10,10 @@ console.log(marvel[3][1]);
 const newArr = marvel.concat(dc); //returns new array with 2 combined arrays without modifying the original array
 console.log(newArr);
 
+//const newArr2 = marvel+dc //returns the value as string
 //SPREAD OPERATOR
 const newArr2 = [...marvel, ...dc]
-console.log(newArr2);
+console.log(newArr2); //object
 
 //FLAT
 const newArr3 = [1,2,3,[4,5,6,7],8,[9,10,[11,12]]]
