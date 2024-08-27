@@ -1,4 +1,4 @@
-const accId = "ty321" /*Values can''t be changed/
+const accId = "ty321" /*Values can''t be changed*/
 let accName = "Tiyasha" /**uses scope validation */
 var accPw = 45678 /**no block-scope validations */
 accCity = "Jaipur" 
