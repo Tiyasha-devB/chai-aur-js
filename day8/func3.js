@@ -36,5 +36,8 @@ const chai2 = () => {
 }
 chai2()
 
-const addNos = (n1,n2) => n1+n2 //implicit
+const addNos = (n1,n2) => n1+n2 //implicit return {}-return is need else not needed
 console.log(addNos(5,3));
+
+const myarr = [2,4,5,8]
+myarr.forEach()
