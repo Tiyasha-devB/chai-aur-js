@@ -36,9 +36,10 @@ one()
 
 //cannot call the function before initialization as we do in norrmal functions
 const addTwo = function(num){
-    return num + 1
+    return num + "2"
 }
 console.log(addTwo(5))
 
+// console.log("3" + + 3 - "3");
 
     
