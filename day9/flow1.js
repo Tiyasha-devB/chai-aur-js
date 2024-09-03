@@ -79,3 +79,19 @@ const emptyObj = {}
 if(Object.keys(emptyObj).length === 0){
     console.log("Empty object");
 }
+
+
+// nullish coalescing opertor(??) null, undefined
+
+let val1;
+val1 = 5 ?? 10
+//val1 = null ?? 10 (we can put complex functions and if it doesnt give us any value then we can return null)
+val1 = undefined  ?? 153 ?? 20
+console.log(val1);
+
+
+//ternary operator
+
+icedtree = 100
+icedtree >= 80 ? console.log("more than 80") : console.log("less");
+
