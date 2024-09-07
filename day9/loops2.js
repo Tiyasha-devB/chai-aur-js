@@ -5,6 +5,15 @@
         
     }
  }*/
+const myobj = {
+    js: 'javascript',
+    cpp: 'c++',
+    rb: 'ruby'
+}
+for (const key in myobj){
+    console.log(key); //only keys will be printed
+    console.log(myobj[key]); //keys will be printed    
+}
 
 
 /* for of
@@ -28,10 +37,44 @@ for(const val of greet) {
     
 }
 
-/* for each
+
+/* for each //value index and list parameters
 array.forEach(element => {
     
 });*/
+const marvel = ["thor","ironman","spiderman","superman"]
+marvel.forEach( function (item) {
+    console.log(item);
+})
+//function reference
+function greetings(val){
+    console.log(val);
+}
+marvel.forEach(greetings)
+//arrow
+marvel.forEach( (val, index, arr) =>{
+    console.log(val, " ", index, " ", arr);
+    
+})
+
+const coding = [
+    {
+        langName: "JavaScript",
+        langFName: ".js"
+    },
+    {
+        langName: "Java",
+        langFName: ".java"
+    },
+    {
+        langName: "Python",
+        langFName: ".py"
+    }
+]
+coding.forEach( (val) => {
+    console.log(`Extension of language ${val.langName} is ${val.langFName}`);
+    
+})
 
 //maps - unique values
 const map = new Map()
@@ -50,3 +93,5 @@ for (const [key, val] of map) {
     console.log(key, ' ', val); //prints key value pairs separated by ' ' 
 }
 //objects will not be iterated with for of
+
+
