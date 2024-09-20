@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | CAC</title>
+</head>
+
+<body style="background-color: #212121; color: white;">
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+</body>
+<script>
+
+    //parent to child
+    const parent = document.querySelector('.parent');
+    console.log(parent);
+    console.log(parent.children); //HTMLCollection of div.day
+    console.log(parent.children[1].innerText); //tuesday
+
+    for (let i = 0; i < parent.children.length; i++) {
+        console.log(parent.children[i].innerText);
+    }
+    console.log("\n");
+
+    console.log(parent.firstElementChild);
+    console.log(parent.lastElementChild);
+
+    //child to parent
+    const dayOne = document.querySelector('.day');
+    console.log(dayOne.parentNode); //can be any type of node (Element, Text, Comment, Document)
+    console.log(dayOne.parentElement); //only returns Element objects.
+
+    console.log(dayOne.nextElementSibling)
+
+    //node list
+    console.log(parent.childNodes); //linebreaks+div
+
+
+</script>
+
+</html>
+
+<!--
+Element objects Properties:
+
+id: Unique identifier for the element.
+className: Space-separated list of class names applied to the element.
+tagName: Name of the HTML tag (e.g., "div", "p", "span").
+textContent: Text content within the element.
+innerHTML: HTML content within the element.
+style: Object representing the element's inline styles.
+attributes: NamedNodeMap containing the element's attributes.
+childNodes: NodeList containing the element's child nodes.
+firstChild: First child node.
+lastChild: Last child node.
+previousSibling: Previous sibling node.
+nextSibling: Next sibling node.
+parentNode: Parent node.
+parentElement: Parent element.
+
+Element objects Methods:
+
+appendChild(child): Appends a child node to the end of the element's child list.
+insertBefore(newChild, referenceNode): Inserts a new child node before a reference node.
+removeChild(child): Removes a child node from the element's child list.
+replaceChild(newChild, oldChild): Replaces one child node with another.
+getAttribute(name): Gets the value of an attribute.
+setAttribute(name, value): Sets the value of an attribute.
+removeAttribute(name): Removes an attribute.
+querySelector(selector): Finds the first element within the element's descendants that matches the specified selector.
+querySelectorAll(selector): Finds all elements within the element's descendants that match the specified selector.
+addEventListener(type, listener): Attaches an event listener to the element.
+removeEventListener(type, listener): Removes an event listener from the element.
+-->
