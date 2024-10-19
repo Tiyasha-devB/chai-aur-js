@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="photoshop"
+                    src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt="photoshop"></li>
+            <li><img width="200px" id="japan"
+                    src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="river"
+                    src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="owl"
+                    src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="prayer"
+                    src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    // document.getElementById('owl').onclick = function () {
+    //     alert('Owl Clicked')
+    // } Propagation problem(3rd param -> false/true)
+    //onClick features are less so we use addEventListener
+
+    // document.getElementById('owl').addEventListener('click', function(){
+    //     alert("Owl Clicked again")
+    // })
+
+    // document.getElementById('owl').addEventListener('click', function(e){ //event object -> e
+    //     console.log(e);
+        
+    // },false)//defaiult 3rd param -> false
+
+
+
+    // EVENT PROPAGATION: 1. EVENT BUBBLING(inner->outer)
+    document.getElementById('images').addEventListener('click', function(e){ 
+        console.log("Clicked inside ul");
+        
+    })
+    
+    document.getElementById('owl').addEventListener('click', function(e){ 
+        console.log("Clicked inside owl"); //when we are clicking the owl img this inner event fires up then the outer does -> bubbling up
+        //e.stopPropagation(); //stops the propagation, doesn't bubble up
+    })
+
+    // EVENT PROPAGATION: 1. EVENT CAPTURING(outer->inner)
+    // document.getElementById('images').addEventListener('click', function(e){ 
+    //     console.log("Clicked inside ul");
+        
+    // }, true)
+    
+    // document.getElementById('owl').addEventListener('click', function(e){ 
+    //     console.log("Clicked inside owl"); //when we are clicking the owl img then the outer event fires then the inner does -> capturing down
+        
+    // }, true)
+
+
+
+    // document.getElementById('google').addEventListener('click', function(e){
+    //     e.preventDefault(); //prevents default feature
+    //     e.stopPropagation();
+    //     console.log("google clicked");
+        
+    // })
+
+
+//whatever images are there in li, if we click they dissappear.
+
+    document.querySelector("#images").addEventListener('click',function(e){
+        console.log(e.target.tagName); //targets the li
+        if (e.target.tagName == 'IMG' || e.target.tagName == 'A'){
+            let removeIt = e.target.parentNode
+           
+            removeIt.remove()
+        }
+        e.preventDefault()
+        //removeIt.parentNode.removechild(removeIt)
+    },false)
+    
+</script>
+
+</html>
+<!-- STUDY - mdn:
+type,timestam,defaultPrevented
+target, toElement, srcElement, currentTarget
+clientX, clientY, screenX, screenY
+altkey, ctrlkey, shiftkey, keyCode -->
+</head>
