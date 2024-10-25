@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Chai aur Javascript</h1>
+  <button id="start">Start</button>
+  <button id="stop">Stop</button>
+</body>
+<script>
+  // Generating random colors
+  const randomColor = function() {
+    const hex = "0123456789ABCDEF";
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += hex[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
+  let intervalId;
+
+  const changeColors = function(){
+    if(!intervalId){
+        intervalId = setInterval(changeBgColor, 1000);
+    }
+    function changeBgColor() {
+        document.body.style.backgroundColor = randomColor();  
+    }
+  };
+
+  const stopColors = function () {
+    clearInterval(intervalId);
+    intervalId = null;
+  }
+
+  document.querySelector('#start').addEventListener('click',changeColors)
+  document.querySelector('#stop').addEventListener('click',stopColors)
+
+</script>
+</html>
+
+<!-- // Start change
+//   let intervalId;
+//   document.querySelector('#start').addEventListener('click', function changeColor() {
+//     document.body.style.backgroundColor = randomColor();
+//     intervalId = setInterval(changeColor, 1000);
+//     console.log(intervalId);
+    
+//   });
+
+//   document.querySelector('#stop').addEventListener('click', function stopChanging() {
+//     if(intervalId){
+//     clearInterval(intervalId);
+//     intervalId = null;
+//     }
+//   }); -->

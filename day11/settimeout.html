@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Chai aur code</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+
+    // setTimeout(function(){
+    //     console.log("Tiyasha");
+        
+    // },2000)//calls browser based api
+    const changeHeading = function(){
+        document.querySelector('h1').innerHTML = 'best js';
+    }
+    const changeMe = setTimeout(changeHeading,5000)//pass the reference setName as its an handler
+
+    const stop = document.querySelector('#stop')
+    stop.addEventListener('click',function(){
+        clearTimeout(changeMe)
+        console.log("Stopped")
+    })
+
+</script>
+</html>
