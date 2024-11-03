@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random GitHub Users</title>
+
+  <style>
+    .body {
+      background-color: #675e5e;
+      color: aliceblue;
+    }
+
+    .card {
+      width: 200px;
+      height: 300px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+      margin-bottom: 20px;
+      display: flex; /* Make cards stack horizontally */
+      flex-direction: column; /* Align content vertically */
+      align-items: center; /* Center content horizontally */
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px; /* Adjust image height as needed */
+      object-fit: cover; /* Crop image to fit within container */
+    }
+
+    .container {
+      padding: 2px 16px;
+    }
+
+    .h4,
+    h6 {
+      color: black;
+      padding-left: 5px;
+      text-align: center; /* Center text within cards */
+    }
+  </style>
+</head>
+
+<body class="body">
+  <div id="cards"></div>
+
+  <script>
+    const numCards = 5; // Adjust the number of cards to display
+
+    function generateRandomUsers() {
+      const cardsContainer = document.getElementById('cards');
+      cardsContainer.innerHTML = ''; // Clear existing cards before generating new ones
+
+      for (let i = 0; i < numCards; i++) {
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        const img = document.createElement('img');
+        img.classList.add('card1');
+        img.alt = 'Profile Picture';
+        img.src = ''; // Initially set image source to empty
+
+        const h6 = document.createElement('h6');
+
+        // Fetch data for a random user using Math.floor(Math.random() * 100) + 1
+        const randomUser = `https://api.github.com/users/${Math.floor(Math.random() * 100) + 1}`;
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', randomUser);
+
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              const data = JSON.parse(xhr.responseText);
+
+              if (data.avatar_url) {
+                img.src = data.avatar_url;
+              } else {
+                console.log("Profile picture (avatar_URL) not found for user:", randomUser);
+              }
+
+              h6.innerHTML = `NAME: ${data.name || 'N/A'}<br>REPOS: ${data.public_repos || 0}`;
+              card.appendChild(img);
+              card.appendChild(h6);
+              cardsContainer.appendChild(card);
+            } else {
+              console.error("Error fetching user data:", xhr.statusText);
+              h6.innerHTML = `Error fetching user data`;
+              card.appendChild(h6);
+              cardsContainer.appendChild(card);
+            }
+          }
+        };
+
+        xhr.send();
+      }
+    }
+
+    generateRandomUsers(); // Call the function to generate cards on page load
+  </script>
+</body>
+
+</html>
