@@ -30,3 +30,5 @@ const userOne = new user1("hitesh",8);
 const userTwo = new user1("tiyasa",9); //new instances are created so each copy will be maintained separartely
 
 console.log(userOne);
+console.log(userTwo.constructor); //reference to own
+
