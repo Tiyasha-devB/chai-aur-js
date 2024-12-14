@@ -22,7 +22,10 @@ let heroPower = {
         console.log(`spidy power is: ${this.spiderman}`);
         
     }
+    
 }
+heroPower.getSpideePower();
+
 Object.prototype.tiyasha = function(){
     console.log("Hitesh is present in all objects");
     
