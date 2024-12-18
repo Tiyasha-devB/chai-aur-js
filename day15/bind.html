@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+
+<body>
+    <button>Button clicked</button>
+</body>
+<script>
+    class React {
+        constructor() {
+            this.library = "React"
+            this.server = "http://localhost:3000"
+
+            //requirement: handle click button, and reference
+            // document.querySelector('button').addEventListener('click',this.handleClick) //reference forcefully attach korte hobe
+            document.querySelector('button').addEventListener('click', this.handleClick.bind(this)) //this variables functions include koredicchi
+        }
+        handleClick() {
+            console.log("Button clicked");
+            console.log(this.server); //button er reference ashche but kaaj hocchena
+
+        }
+    }
+    const app = new React();
+</script>
+
+</html>
+
+<!-- BIND
+The Problem:
+
+In the original code, when the button is clicked, the handleClick function is executed as an event listener. The this
+keyword within the handleClick function, in this context, refers to the button element itself, not the React instance.
+As a result, when you try to access this.server, you're actually trying to access the server property of the button
+element, which doesn't exist.
+
+The Solution: Binding this
+
+To ensure that this refers to the React instance, we use the .bind(this) method. This method binds the handleClick
+function to the app object, so whenever the function is called, this will always refer to the app object. -->
